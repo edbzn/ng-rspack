@@ -7,75 +7,36 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/rspack:rspack",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "target": "web",
+        "rspackConfig": "rspack.config.js",
         "outputPath": "dist/ng-rspack",
-        "index": "./src/index.html",
         "main": "./src/main.ts",
-        "polyfills": ["zone.js"],
         "tsConfig": "./tsconfig.app.json",
-        "assets": ["./src/favicon.ico", "./src/assets"],
-        "styles": ["./src/styles.css"],
-        "scripts": []
+        "assets": ["./src/favicon.ico", "./src/assets"]
       },
       "configurations": {
-        "production": {
-          "budgets": [
-            {
-              "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
-            },
-            {
-              "type": "anyComponentStyle",
-              "maximumWarning": "2kb",
-              "maximumError": "4kb"
-            }
-          ],
-          "outputHashing": "all"
-        },
         "development": {
-          "buildOptimizer": false,
-          "optimization": false,
-          "vendorChunk": true,
-          "extractLicenses": false,
-          "sourceMap": true,
-          "namedChunks": true
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production",
+          "optimization": true,
+          "sourceMap": false
         }
       },
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/rspack:dev-server",
       "configurations": {
-        "production": {
-          "buildTarget": "ng-rspack:build:production"
-        },
         "development": {
           "buildTarget": "ng-rspack:build:development"
         }
       },
       "defaultConfiguration": "development"
-    },
-    "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
-      "options": {
-        "buildTarget": "ng-rspack:build"
-      }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["./src"]
-      }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
-      "options": {
-        "jestConfig": "jest.config.ts"
-      }
     }
   }
 }
