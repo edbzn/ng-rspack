@@ -1,0 +1,8 @@
+total 480K
+drwxr-xr-x 2 runner docker 4.0K May  1 11:07 .
+drwxr-xr-x 3 runner docker 4.0K May  1 11:07 ..
+-rw-r--r-- 1 runner docker  566 May  1 11:07 index.html
+-rw-r--r-- 1 runner docker 422K May  1 11:07 main.a3ed9c5b82f3d83228d8.js
+-rw-r--r-- 1 runner docker  33K May  1 11:07 polyfills.61249712ff98a87fea6a.js
+-rw-r--r-- 1 runner docker  499 May  1 11:07 styles.1620bfe86cca3951a762.js
+-rw-r--r-- 1 runner docker   86 May  1 11:07 styles.ea198d9757440874694a.css
