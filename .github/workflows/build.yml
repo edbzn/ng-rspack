@@ -8,9 +8,9 @@ jobs:
       - uses: actions/setup-node@v4
       - uses: pnpm/action-setup@v3
         with:
-          version: 6
+          version: 8
       - run: pnpm install
-      - run: nx build
+      - run: pnpm nx build
       - run: ls -lah dist/ng-rspack >> build.log
       - run: cat build.log
       - name: Commit build.log
