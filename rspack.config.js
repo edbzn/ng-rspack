@@ -136,10 +136,12 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       ],
     },
     plugins: [
+      // Following plugin is not working:
       new SuppressExtractedTextChunksWebpackPlugin(),
+
       new ProgressPlugin({}),
       new CssExtractRspackPlugin({}),
-      new HtmlRspackPlugin({ template: 'src/index.html' }),
+      new HtmlRspackPlugin({ minify: true, template: 'src/index.html' }),
       new NamedChunksPlugin(),
       new OccurrencesPlugin({
         aot: true,
