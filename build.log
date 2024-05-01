@@ -14,3 +14,11 @@ drwxr-xr-x 3 runner docker 4.0K May  1 11:11 ..
 -rw-r--r-- 1 runner docker  33K May  1 11:11 polyfills.61249712ff98a87fea6a.js
 -rw-r--r-- 1 runner docker  499 May  1 11:11 styles.1620bfe86cca3951a762.js
 -rw-r--r-- 1 runner docker   86 May  1 11:11 styles.ea198d9757440874694a.css
+total 480K
+drwxr-xr-x 2 runner docker 4.0K May  1 11:56 .
+drwxr-xr-x 3 runner docker 4.0K May  1 11:56 ..
+-rw-r--r-- 1 runner docker  566 May  1 11:56 index.html
+-rw-r--r-- 1 runner docker 421K May  1 11:56 main.bc68a9280c84297332b5.js
+-rw-r--r-- 1 runner docker  33K May  1 11:56 polyfills.60fe1a4e932056ef2c8f.js
+-rw-r--r-- 1 runner docker  499 May  1 11:56 styles.1620bfe86cca3951a762.js
+-rw-r--r-- 1 runner docker   86 May  1 11:56 styles.ea198d9757440874694a.css
