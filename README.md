@@ -4,9 +4,11 @@
 
 <img width="64" src="https://assets.rspack.dev/rspack/rspack-logo.svg">
 
-<img width="64" src="https://angular.dev/assets/images/press-kit/angular_icon_gradient.gif">
+<img width="64" src="https://blog.ninja-squad.com/assets/images/angular_gradient.png">
 
 ```
 nx build
 nx serve
 ```
+
+See [build.log](./build.log) for checking bundle size difference between builds.
