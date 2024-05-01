@@ -23,7 +23,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
     ...baseConfig,
     mode: 'production',
     devtool: false,
-    target: ['web', 'es2015'],
+    target: ['web', 'es2022'],
     entry: {
       styles: ['./src/styles.css'],
       polyfills: ['zone.js'],

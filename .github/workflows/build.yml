@@ -1,0 +1,21 @@
+name: build & log
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v3
+      - run: nx build
+      - run: ls -lah dist/ng-rspack >> build.log
+      - run: cat build.log
+      - name: Commit build.log
+        run: |
+          git config --local user.email "bozonedouard@gmail.com"
+          git config --local user.name "Edouard Bozon"
+          git add build.log
+          git commit -m "docs: update build.log"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
