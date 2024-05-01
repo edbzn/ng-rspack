@@ -1,5 +1,9 @@
 const { composePlugins, withNx, withWeb } = require('@nx/rspack');
-const { HtmlRspackPlugin } = require('@rspack/core');
+const {
+  HtmlRspackPlugin,
+  SwcJsMinimizerRspackPlugin,
+  SwcCssMinimizerRspackPlugin,
+} = require('@rspack/core');
 const { AngularWebpackPlugin } = require('@ngtools/webpack');
 const { ProgressPlugin, CssExtractRspackPlugin } = require('@rspack/core');
 const {
@@ -8,6 +12,9 @@ const {
 const {
   OccurrencesPlugin,
 } = require('@angular-devkit/build-angular/src/tools/webpack/plugins/occurrences-plugin');
+const {
+  SuppressExtractedTextChunksWebpackPlugin,
+} = require('@angular-devkit/build-angular/src/tools/webpack/plugins/suppress-entry-chunks-webpack-plugin');
 /**
  * Angular CLI Webpack references:
  *
@@ -32,6 +39,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
     resolve: {
       extensions: ['.ts', '.js'],
     },
+    stats: 'normal',
     output: {
       uniqueName: 'ng-rspack',
       clean: true,
@@ -46,7 +54,6 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
     experiments: {
       asyncWebAssembly: true,
     },
-    optimization: {},
     module: {
       parser: {
         javascript: {
@@ -59,24 +66,6 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
           test: /\.?(svg|html)$/,
           resourceQuery: /\?ngResource/,
           type: 'asset/source',
-        },
-        // Global styles
-        {
-          test: /\.?(css)$/,
-          resourceQuery: /\?ngGlobalStyle/,
-          use: [
-            {
-              loader: CssExtractRspackPlugin.loader,
-            },
-            {
-              loader: require.resolve('css-loader'),
-              options: {
-                url: false,
-                sourceMap: false,
-                importLoaders: 1,
-              },
-            },
-          ],
         },
         // Component styles
         {
@@ -99,7 +88,6 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
           resourceQuery: /\?ngResource/,
           use: [],
         },
-
         { test: /[/\\]rxjs[/\\]add[/\\].+\.js$/, sideEffects: true },
         {
           test: /\.[cm]?[tj]sx?$/,
@@ -116,16 +104,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
                 aot: true,
                 optimize: true,
                 supportedBrowsers: [
-                  'chrome 111',
-                  'chrome 110',
-                  'edge 111',
-                  'edge 110',
-                  'firefox 111',
-                  'firefox 102',
-                  'ios_saf 16.3',
-                  'ios_saf 16.2',
-                  'safari 16.3',
-                  'safari 16.2',
+                  'chrome 124',
                 ],
               },
             },
@@ -142,7 +121,14 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
         },
       ],
     },
+    optimization: {
+      minimizer: [
+        new SwcJsMinimizerRspackPlugin(),
+        new SwcCssMinimizerRspackPlugin(),
+      ],
+    },
     plugins: [
+      new SuppressExtractedTextChunksWebpackPlugin(),
       new ProgressPlugin({}),
       new CssExtractRspackPlugin({}),
       new HtmlRspackPlugin({ template: 'src/index.html' }),
