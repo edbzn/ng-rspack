@@ -87,7 +87,7 @@ devDependencies:
     version: 18.3.4(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(nx@18.3.4)(typescript@5.4.5)
   '@nx/rspack':
     specifier: ^18.3.0
-    version: 18.3.0(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0)
+    version: 18.3.0(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(sass@1.76.0)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0)
   '@nx/workspace':
     specifier: 18.3.4
     version: 18.3.4(@swc-node/register@1.8.0)(@swc/core@1.3.107)
@@ -121,6 +121,9 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^7.3.0
     version: 7.8.0(eslint@8.57.0)(typescript@5.4.5)
+  css-loader:
+    specifier: ^7.1.1
+    version: 7.1.1(@rspack/core@0.6.3)(webpack@5.91.0)
   eslint:
     specifier: ~8.57.0
     version: 8.57.0
@@ -142,6 +145,15 @@ devDependencies:
   prettier:
     specifier: ^2.6.2
     version: 2.8.8
+  raw-loader:
+    specifier: ^4.0.2
+    version: 4.0.2(webpack@5.91.0)
+  sass:
+    specifier: ^1.76.0
+    version: 1.76.0
+  sass-loader:
+    specifier: ^14.2.1
+    version: 14.2.1(@rspack/core@0.6.3)(sass@1.76.0)(webpack@5.91.0)
   ts-jest:
     specifier: ^29.1.0
     version: 29.1.2(@babel/core@7.24.5)(esbuild@0.20.1)(jest@29.7.0)(typescript@5.4.5)
@@ -274,7 +286,7 @@ packages:
       tslib: 2.6.2
       typescript: 5.4.5
       undici: 6.11.1
-      vite: 5.1.7(@types/node@18.16.9)(less@4.2.0)(sass@1.71.1)(stylus@0.59.0)(terser@5.29.1)
+      vite: 5.1.7(@types/node@18.16.9)(less@4.2.0)(sass@1.76.0)(stylus@0.59.0)
       watchpack: 2.4.0
       webpack: 5.90.3(@swc/core@1.3.107)(esbuild@0.20.1)
       webpack-dev-middleware: 6.1.2(webpack@5.90.3)
@@ -3862,10 +3874,10 @@ packages:
       - typescript
       - verdaccio
 
-  /@nrwl/rspack@18.3.0(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0):
+  /@nrwl/rspack@18.3.0(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(sass@1.76.0)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0):
     resolution: {integrity: sha512-GoyrUUIg02DaT1fbZgQN7AGRSzVhl2xUJS3+KjYVJ8TYSGSa0fIda14nodVzbc1CDikOScjjCwvx7p9uv4V8NA==}
     dependencies:
-      '@nx/rspack': 18.3.0-beta.1(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0)
+      '@nx/rspack': 18.3.0-beta.1(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(sass@1.76.0)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -3889,10 +3901,10 @@ packages:
       - webpack
     dev: true
 
-  /@nrwl/rspack@18.3.0-beta.1(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0):
+  /@nrwl/rspack@18.3.0-beta.1(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(sass@1.76.0)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0):
     resolution: {integrity: sha512-2o92vyZYgi6OlmUIFk6qQt0jXJ9Ziyrj1R6VIshIeuKs9SgcGuDEk6GIAYbnIbOSLDSHYCeTUOKE2kvj9Mk1uQ==}
     dependencies:
-      '@nx/rspack': 18.3.0-beta.1(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0)
+      '@nx/rspack': 18.3.0-beta.1(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(sass@1.76.0)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -4307,10 +4319,10 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@nx/rspack@18.3.0(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0):
+  /@nx/rspack@18.3.0(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(sass@1.76.0)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0):
     resolution: {integrity: sha512-RSui4ckKHQPe6DZDnuYKmWLGWx3yTMemOpGtOd+ic0j34xdsIDwGlHXDjqctZylLshYs5pe2SDwuFNOtUKWEIQ==}
     dependencies:
-      '@nrwl/rspack': 18.3.0(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0)
+      '@nrwl/rspack': 18.3.0(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(sass@1.76.0)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0)
       '@nx/devkit': 18.3.4(nx@18.3.4)
       '@nx/eslint': 18.3.4(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(nx@18.3.4)
       '@nx/js': 18.3.4(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(nx@18.3.4)(typescript@5.4.5)
@@ -4320,7 +4332,7 @@ packages:
       '@rspack/plugin-react-refresh': 0.6.3
       less-loader: 11.1.0(less@4.2.0)(webpack@5.91.0)
       license-webpack-plugin: 4.0.2(webpack@5.91.0)
-      sass-loader: 12.6.0(sass@1.75.0)(webpack@5.91.0)
+      sass-loader: 12.6.0(sass@1.76.0)(webpack@5.91.0)
       stylus-loader: 7.1.3(stylus@0.59.0)(webpack@5.91.0)
     transitivePeerDependencies:
       - '@babel/traverse'
@@ -4345,10 +4357,10 @@ packages:
       - webpack
     dev: true
 
-  /@nx/rspack@18.3.0-beta.1(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0):
+  /@nx/rspack@18.3.0-beta.1(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(sass@1.76.0)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0):
     resolution: {integrity: sha512-w3tNUeoC3L2X78QesCDZfraaawuHrDT3+dx3mMgHHp3XKqCsn1tY08zSajRaAUD8AnwcDlhGn6N6fTr4fymMPA==}
     dependencies:
-      '@nrwl/rspack': 18.3.0-beta.1(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0)
+      '@nrwl/rspack': 18.3.0-beta.1(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@swc/helpers@0.5.11)(@types/node@18.16.9)(less@4.2.0)(nx@18.3.4)(sass@1.76.0)(stylus@0.59.0)(typescript@5.4.5)(webpack@5.91.0)
       '@nx/devkit': 18.3.4(nx@18.3.4)
       '@nx/eslint': 18.3.4(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(nx@18.3.4)
       '@nx/js': 18.3.4(@swc-node/register@1.8.0)(@swc/core@1.3.107)(@types/node@18.16.9)(nx@18.3.4)(typescript@5.4.5)
@@ -4358,7 +4370,7 @@ packages:
       '@rspack/plugin-react-refresh': 0.6.3
       less-loader: 11.1.0(less@4.2.0)(webpack@5.91.0)
       license-webpack-plugin: 4.0.2(webpack@5.91.0)
-      sass-loader: 12.6.0(sass@1.75.0)(webpack@5.91.0)
+      sass-loader: 12.6.0(sass@1.76.0)(webpack@5.91.0)
       stylus-loader: 7.1.3(stylus@0.59.0)(webpack@5.91.0)
     transitivePeerDependencies:
       - '@babel/traverse'
@@ -4432,8 +4444,8 @@ packages:
       postcss-import: 14.1.0(postcss@8.4.38)
       postcss-loader: 6.2.1(postcss@8.4.38)(webpack@5.91.0)
       rxjs: 7.8.1
-      sass: 1.75.0
-      sass-loader: 12.6.0(sass@1.75.0)(webpack@5.91.0)
+      sass: 1.76.0
+      sass-loader: 12.6.0(sass@1.76.0)(webpack@5.91.0)
       source-map-loader: 3.0.2(webpack@5.91.0)
       style-loader: 3.3.4(webpack@5.91.0)
       stylus: 0.59.0
@@ -5451,7 +5463,7 @@ packages:
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0
     dependencies:
-      vite: 5.1.7(@types/node@18.16.9)(less@4.2.0)(sass@1.71.1)(stylus@0.59.0)(terser@5.29.1)
+      vite: 5.1.7(@types/node@18.16.9)(less@4.2.0)(sass@1.76.0)(stylus@0.59.0)
 
   /@webassemblyjs/ast@1.12.1:
     resolution: {integrity: sha512-EKfMUOPRRUTy5UII4qJDGPpqfwjOmZ5jeGFwid9mnoqIFK+e0vqoi1qH56JpmZSzEL53jKnNzScdmftJyG5xWg==}
@@ -6637,6 +6649,30 @@ packages:
       semver: 7.6.0
       webpack: 5.91.0(@swc/core@1.3.107)
     dev: false
+
+  /css-loader@7.1.1(@rspack/core@0.6.3)(webpack@5.91.0):
+    resolution: {integrity: sha512-OxIR5P2mjO1PSXk44bWuQ8XtMK4dpEqpIyERCx3ewOo3I8EmbcxMPUc5ScLtQfgXtOojoMv57So4V/C02HQLsw==}
+    engines: {node: '>= 18.12.0'}
+    peerDependencies:
+      '@rspack/core': 0.x || 1.x
+      webpack: ^5.27.0
+    peerDependenciesMeta:
+      '@rspack/core':
+        optional: true
+      webpack:
+        optional: true
+    dependencies:
+      '@rspack/core': 0.6.3(@swc/helpers@0.5.11)
+      icss-utils: 5.1.0(postcss@8.4.38)
+      postcss: 8.4.38
+      postcss-modules-extract-imports: 3.1.0(postcss@8.4.38)
+      postcss-modules-local-by-default: 4.0.5(postcss@8.4.38)
+      postcss-modules-scope: 3.2.0(postcss@8.4.38)
+      postcss-modules-values: 4.0.0(postcss@8.4.38)
+      postcss-value-parser: 4.2.0
+      semver: 7.6.0
+      webpack: 5.91.0(@swc/core@1.3.107)
+    dev: true
 
   /css-minimizer-webpack-plugin@5.0.1(webpack@5.91.0):
     resolution: {integrity: sha512-3caImjKFQkS+ws1TGcFn0V1HyDJFq1Euy589JlD6/3rV2kj+w7r5G9WDMgSHvpvXHNZ2calVypZWuEDQd9wfLg==}
@@ -10468,6 +10504,17 @@ packages:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
+  /raw-loader@4.0.2(webpack@5.91.0):
+    resolution: {integrity: sha512-ZnScIV3ag9A4wPX/ZayxL/jZH+euYb6FcUinPcgiQW0+UBtEv0O6Q3lGd3cqJ+GHH+rksEv3Pj99oxJ3u3VIKA==}
+    engines: {node: '>= 10.13.0'}
+    peerDependencies:
+      webpack: ^4.0.0 || ^5.0.0
+    dependencies:
+      loader-utils: 2.0.4
+      schema-utils: 3.3.0
+      webpack: 5.91.0(@swc/core@1.3.107)
+    dev: true
+
   /react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
 
@@ -10693,7 +10740,7 @@ packages:
   /safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  /sass-loader@12.6.0(sass@1.75.0)(webpack@5.91.0):
+  /sass-loader@12.6.0(sass@1.76.0)(webpack@5.91.0):
     resolution: {integrity: sha512-oLTaH0YCtX4cfnJZxKSLAyglED0naiYfNG1iXfU5w1LNZ+ukoA5DtyDIN5zmKVZwYNJP4KRc5Y3hkWga+7tYfA==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
@@ -10714,7 +10761,7 @@ packages:
     dependencies:
       klona: 2.0.6
       neo-async: 2.6.2
-      sass: 1.75.0
+      sass: 1.76.0
       webpack: 5.91.0(@swc/core@1.3.107)
 
   /sass-loader@14.1.1(@rspack/core@0.6.3)(sass@1.71.1)(webpack@5.90.3):
@@ -10743,6 +10790,33 @@ packages:
       sass: 1.71.1
       webpack: 5.90.3(@swc/core@1.3.107)(esbuild@0.20.1)
 
+  /sass-loader@14.2.1(@rspack/core@0.6.3)(sass@1.76.0)(webpack@5.91.0):
+    resolution: {integrity: sha512-G0VcnMYU18a4N7VoNDegg2OuMjYtxnqzQWARVWCIVSZwJeiL9kg8QMsuIZOplsJgTzZLF6jGxI3AClj8I9nRdQ==}
+    engines: {node: '>= 18.12.0'}
+    peerDependencies:
+      '@rspack/core': 0.x || 1.x
+      node-sass: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
+      sass: ^1.3.0
+      sass-embedded: '*'
+      webpack: ^5.0.0
+    peerDependenciesMeta:
+      '@rspack/core':
+        optional: true
+      node-sass:
+        optional: true
+      sass:
+        optional: true
+      sass-embedded:
+        optional: true
+      webpack:
+        optional: true
+    dependencies:
+      '@rspack/core': 0.6.3(@swc/helpers@0.5.11)
+      neo-async: 2.6.2
+      sass: 1.76.0
+      webpack: 5.91.0(@swc/core@1.3.107)
+    dev: true
+
   /sass@1.71.1:
     resolution: {integrity: sha512-wovtnV2PxzteLlfNzbgm1tFXPLoZILYAMJtvoXXkD7/+1uP41eKkIt1ypWq5/q2uT94qHjXehEYfmjKOvjL9sg==}
     engines: {node: '>=14.0.0'}
@@ -10752,8 +10826,8 @@ packages:
       immutable: 4.3.5
       source-map-js: 1.2.0
 
-  /sass@1.75.0:
-    resolution: {integrity: sha512-ShMYi3WkrDWxExyxSZPst4/okE9ts46xZmJDSawJQrnte7M1V9fScVB+uNXOVKRBt0PggHOwoZcn8mYX4trnBw==}
+  /sass@1.76.0:
+    resolution: {integrity: sha512-nc3LeqvF2FNW5xGF1zxZifdW3ffIz5aBb7I7tSvOoNu7z1RQ6pFt9MBuiPtjgaI62YWrM/txjWlOCFiGtf2xpw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -11725,7 +11799,7 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  /vite@5.1.7(@types/node@18.16.9)(less@4.2.0)(sass@1.71.1)(stylus@0.59.0)(terser@5.29.1):
+  /vite@5.1.7(@types/node@18.16.9)(less@4.2.0)(sass@1.76.0)(stylus@0.59.0):
     resolution: {integrity: sha512-sgnEEFTZYMui/sTlH1/XEnVNHMujOahPLGMxn1+5sIT45Xjng1Ec1K78jRP15dSmVgg5WBin9yO81j3o9OxofA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -11758,9 +11832,8 @@ packages:
       less: 4.2.0
       postcss: 8.4.38
       rollup: 4.17.2
-      sass: 1.71.1
+      sass: 1.76.0
       stylus: 0.59.0
-      terser: 5.29.1
     optionalDependencies:
       fsevents: 2.3.3
 

@@ -1,15 +1,13 @@
 const { composePlugins, withNx, withWeb } = require('@nx/rspack');
 const { HtmlRspackPlugin } = require('@rspack/core');
-const {
-  AngularWebpackPlugin,
-} = require('@ngtools/webpack');
+const { AngularWebpackPlugin } = require('@ngtools/webpack');
+const { ProgressPlugin, CssExtractRspackPlugin } = require('@rspack/core');
 const {
   NamedChunksPlugin,
 } = require('@angular-devkit/build-angular/src/tools/webpack/plugins/named-chunks-plugin');
 const {
   OccurrencesPlugin,
 } = require('@angular-devkit/build-angular/src/tools/webpack/plugins/occurrences-plugin');
-
 /**
  * Angular CLI Webpack references:
  *
@@ -27,6 +25,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
     devtool: false,
     target: ['web', 'es2015'],
     entry: {
+      styles: ['./src/styles.css'],
       polyfills: ['zone.js'],
       main: ['./src/main.ts'],
     },
@@ -61,11 +60,46 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
           resourceQuery: /\?ngResource/,
           type: 'asset/source',
         },
+        // Global styles
+        {
+          test: /\.?(css)$/,
+          resourceQuery: /\?ngGlobalStyle/,
+          use: [
+            {
+              loader: CssExtractRspackPlugin.loader,
+            },
+            {
+              loader: require.resolve('css-loader'),
+              options: {
+                url: false,
+                sourceMap: false,
+                importLoaders: 1,
+              },
+            },
+          ],
+        },
+        // Component styles
         {
           test: /\.?(scss)$/,
           resourceQuery: /\?ngResource/,
-          use: [{ loader: 'raw-loader' }, { loader: 'sass-loader' }],
+          use: [
+            {
+              loader: require.resolve('raw-loader'),
+            },
+            {
+              loader: require.resolve('sass-loader'),
+              options: {
+                implementation: require('sass'),
+              },
+            },
+          ],
         },
+        {
+          test: /\.?(css)$/,
+          resourceQuery: /\?ngResource/,
+          use: [],
+        },
+
         { test: /[/\\]rxjs[/\\]add[/\\].+\.js$/, sideEffects: true },
         {
           test: /\.[cm]?[tj]sx?$/,
@@ -109,6 +143,8 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       ],
     },
     plugins: [
+      new ProgressPlugin({}),
+      new CssExtractRspackPlugin({}),
       new HtmlRspackPlugin({ template: 'src/index.html' }),
       new NamedChunksPlugin(),
       new OccurrencesPlugin({
