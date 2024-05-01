@@ -2,8 +2,10 @@ const { composePlugins, withNx, withWeb } = require('@nx/rspack');
 const {
   HtmlRspackPlugin,
   SwcJsMinimizerRspackPlugin,
-  SwcCssMinimizerRspackPlugin,
 } = require('@rspack/core');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const lightningcss = require('lightningcss');
+const browserslist = require('browserslist');
 const { AngularWebpackPlugin } = require('@ngtools/webpack');
 const { ProgressPlugin, CssExtractRspackPlugin } = require('@rspack/core');
 const {
@@ -103,9 +105,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
                 cacheDirectory: false,
                 aot: true,
                 optimize: true,
-                supportedBrowsers: [
-                  'chrome 124',
-                ],
+                supportedBrowsers: ['chrome 124'],
               },
             },
           ],
@@ -122,9 +122,17 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       ],
     },
     optimization: {
+      minimize: true,
       minimizer: [
         new SwcJsMinimizerRspackPlugin(),
-        new SwcCssMinimizerRspackPlugin(),
+        new CssMinimizerPlugin({
+          minify: CssMinimizerPlugin.lightningCssMinify,
+          minimizerOptions: {
+            targets: lightningcss.browserslistToTargets(
+              browserslist('last 1 Chrome versions')
+            ),
+          },
+        }),
       ],
     },
     plugins: [
