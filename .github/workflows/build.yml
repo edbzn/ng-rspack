@@ -10,7 +10,7 @@ jobs:
         with:
           version: 8
       - run: pnpm install
-      - run: pnpm nx run-many -t build build-wp build-es >> build.log
+      - run: pnpm nx run-many -t build build-wp build-es | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" >> build.log
       - run: ls -lah dist/ng-rspack/rspack >> build.log
       - run: ls -lah dist/ng-rspack/webpack >> build.log
       - run: ls -lah dist/ng-rspack/esbuild/browser >> build.log

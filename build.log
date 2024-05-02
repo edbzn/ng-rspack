@@ -65,17 +65,17 @@ drwxr-xr-x 3 runner docker 4.0K May  1 12:50 ..
 
 - Building...
 
-[37m[1mInitial chunk files[22m  [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m[39m
-[37m[32mmain-MNAIRYWO.js[39m[37m     [2m | [22m[2mmain[22m         [2m | [22m[36m180.65 kB[39m[37m[2m | [22m               [36m48.62 kB[39m[37m[39m
-[37m[32mpolyfills-7NI4OVGA.js[39m[37m[2m | [22m[2mpolyfills[22m    [2m | [22m [36m33.10 kB[39m[37m[2m | [22m               [36m10.72 kB[39m[37m[39m
-[37m[32mstyles-IXCL2UTK.css[39m[37m  [2m | [22m[2mstyles[22m       [2m | [22m [36m85 bytes[39m[37m[2m | [22m               [36m85 bytes[39m[37m[39m
-[37m[39m
-[37m[1m [22m                    [2m | [22m[1mInitial total[22m[2m | [22m[1m213.84 kB[22m[2m | [22m               [1m59.42 kB[22m[39m
-[37m[39m
-[37mOutput location: /home/runner/work/ng-rspack/ng-rspack/dist/ng-rspack/esbuild[39m
-[37m[39m
-[37mApplication bundle generation complete. [10.382 seconds][39m
-[37m[39m
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main-MNAIRYWO.js      | main          | 180.65 kB |                48.62 kB
+polyfills-7NI4OVGA.js | polyfills     |  33.10 kB |                10.72 kB
+styles-IXCL2UTK.css   | styles        |  85 bytes |                85 bytes
+
+                      | Initial total | 213.84 kB |                59.42 kB
+
+Output location: /home/runner/work/ng-rspack/ng-rspack/dist/ng-rspack/esbuild
+
+Application bundle generation complete. [10.382 seconds]
+
 ::endgroup::
 ::group::✅ > nx run ng-rspack:build:production
 
@@ -96,22 +96,22 @@ Rspack 0.6.3 compiled successfully in 13.12 s (389a9154226210f70563)
 ::group::✅ > nx run ng-rspack:build-wp:production
 
 - Generating browser application bundles (phase: setup)...
-[32m✔[39m Browser application bundle generation complete.
-[32m✔[39m Browser application bundle generation complete.
+✔ Browser application bundle generation complete.
+✔ Browser application bundle generation complete.
 - Copying assets...
-[32m✔[39m Copying assets complete.
+✔ Copying assets complete.
 - Generating index html...
-[32m✔[39m Index html generation complete.
-[37m[0m[0m[39m
-[37m[0m[1mInitial chunk files[22m          [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m[0m[39m
-[37m[0m[32mmain.e68e7cbf8feae6b6.js[39m[37m     [2m | [22m[2mmain[22m         [2m | [22m[36m179.83 kB[39m[37m[2m | [22m               [36m48.18 kB[39m[37m[0m[39m
-[37m[0m[32mpolyfills.217bf7d4eff80d0e.js[39m[37m[2m | [22m[2mpolyfills[22m    [2m | [22m [36m33.37 kB[39m[37m[2m | [22m               [36m10.73 kB[39m[37m[0m[39m
-[37m[0m[32mruntime.6c9861ca6e26c512.js[39m[37m  [2m | [22m[2mruntime[22m      [2m | [22m[36m896 bytes[39m[37m[2m | [22m              [36m508 bytes[39m[37m[0m[39m
-[37m[0m[32mstyles.9cc1c87275a936d2.css[39m[37m  [2m | [22m[2mstyles[22m       [2m | [22m [36m85 bytes[39m[37m[2m | [22m               [36m51 bytes[39m[37m[0m[39m
-[37m[0m[0m[39m
-[37m[0m[1m [22m                            [2m | [22m[1mInitial total[22m[2m | [22m[1m214.16 kB[22m[2m | [22m               [1m59.46 kB[22m[0m[39m
-[37m[0m[0m[39m
-[37m[0mBuild at: [1m[37m2024-05-02T09:27:50.404Z[39m[37m[22m - Hash: [1m[37m610c6efabecb6db3[39m[37m[22m - Time: [1m[37m17132[39m[37m[22mms[0m[39m
+✔ Index html generation complete.
+
+Initial chunk files           | Names         |  Raw size | Estimated transfer size
+main.e68e7cbf8feae6b6.js      | main          | 179.83 kB |                48.18 kB
+polyfills.217bf7d4eff80d0e.js | polyfills     |  33.37 kB |                10.73 kB
+runtime.6c9861ca6e26c512.js   | runtime       | 896 bytes |               508 bytes
+styles.9cc1c87275a936d2.css   | styles        |  85 bytes |                51 bytes
+
+                              | Initial total | 214.16 kB |                59.46 kB
+
+Build at: 2024-05-02T09:27:50.404Z - Hash: 610c6efabecb6db3 - Time: 17132ms
 ::endgroup::
 
 
@@ -152,17 +152,17 @@ drwxr-xr-x 2 runner docker 4.0K May  2 09:27 browser
 
 - Building...
 
-[37m[1mInitial chunk files[22m  [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m[39m
-[37m[32mmain-MNAIRYWO.js[39m[37m     [2m | [22m[2mmain[22m         [2m | [22m[36m180.65 kB[39m[37m[2m | [22m               [36m48.62 kB[39m[37m[39m
-[37m[32mpolyfills-7NI4OVGA.js[39m[37m[2m | [22m[2mpolyfills[22m    [2m | [22m [36m33.10 kB[39m[37m[2m | [22m               [36m10.72 kB[39m[37m[39m
-[37m[32mstyles-IXCL2UTK.css[39m[37m  [2m | [22m[2mstyles[22m       [2m | [22m [36m85 bytes[39m[37m[2m | [22m               [36m85 bytes[39m[37m[39m
-[37m[39m
-[37m[1m [22m                    [2m | [22m[1mInitial total[22m[2m | [22m[1m213.84 kB[22m[2m | [22m               [1m59.42 kB[22m[39m
-[37m[39m
-[37mOutput location: /home/runner/work/ng-rspack/ng-rspack/dist/ng-rspack/esbuild[39m
-[37m[39m
-[37mApplication bundle generation complete. [10.613 seconds][39m
-[37m[39m
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main-MNAIRYWO.js      | main          | 180.65 kB |                48.62 kB
+polyfills-7NI4OVGA.js | polyfills     |  33.10 kB |                10.72 kB
+styles-IXCL2UTK.css   | styles        |  85 bytes |                85 bytes
+
+                      | Initial total | 213.84 kB |                59.42 kB
+
+Output location: /home/runner/work/ng-rspack/ng-rspack/dist/ng-rspack/esbuild
+
+Application bundle generation complete. [10.613 seconds]
+
 ::endgroup::
 ::group::✅ > nx run ng-rspack:build:production
 
@@ -183,22 +183,22 @@ Rspack 0.6.3 compiled successfully in 13.51 s (389a9154226210f70563)
 ::group::✅ > nx run ng-rspack:build-wp:production
 
 - Generating browser application bundles (phase: setup)...
-[32m✔[39m Browser application bundle generation complete.
-[32m✔[39m Browser application bundle generation complete.
+✔ Browser application bundle generation complete.
+✔ Browser application bundle generation complete.
 - Copying assets...
-[32m✔[39m Copying assets complete.
+✔ Copying assets complete.
 - Generating index html...
-[32m✔[39m Index html generation complete.
-[37m[0m[0m[39m
-[37m[0m[1mInitial chunk files[22m          [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m[0m[39m
-[37m[0m[32mmain.e68e7cbf8feae6b6.js[39m[37m     [2m | [22m[2mmain[22m         [2m | [22m[36m179.83 kB[39m[37m[2m | [22m               [36m48.18 kB[39m[37m[0m[39m
-[37m[0m[32mpolyfills.217bf7d4eff80d0e.js[39m[37m[2m | [22m[2mpolyfills[22m    [2m | [22m [36m33.37 kB[39m[37m[2m | [22m               [36m10.73 kB[39m[37m[0m[39m
-[37m[0m[32mruntime.6c9861ca6e26c512.js[39m[37m  [2m | [22m[2mruntime[22m      [2m | [22m[36m896 bytes[39m[37m[2m | [22m              [36m508 bytes[39m[37m[0m[39m
-[37m[0m[32mstyles.9cc1c87275a936d2.css[39m[37m  [2m | [22m[2mstyles[22m       [2m | [22m [36m85 bytes[39m[37m[2m | [22m               [36m51 bytes[39m[37m[0m[39m
-[37m[0m[0m[39m
-[37m[0m[1m [22m                            [2m | [22m[1mInitial total[22m[2m | [22m[1m214.16 kB[22m[2m | [22m               [1m59.46 kB[22m[0m[39m
-[37m[0m[0m[39m
-[37m[0mBuild at: [1m[37m2024-05-02T09:29:26.131Z[39m[37m[22m - Hash: [1m[37m610c6efabecb6db3[39m[37m[22m - Time: [1m[37m17640[39m[37m[22mms[0m[39m
+✔ Index html generation complete.
+
+Initial chunk files           | Names         |  Raw size | Estimated transfer size
+main.e68e7cbf8feae6b6.js      | main          | 179.83 kB |                48.18 kB
+polyfills.217bf7d4eff80d0e.js | polyfills     |  33.37 kB |                10.73 kB
+runtime.6c9861ca6e26c512.js   | runtime       | 896 bytes |               508 bytes
+styles.9cc1c87275a936d2.css   | styles        |  85 bytes |                51 bytes
+
+                              | Initial total | 214.16 kB |                59.46 kB
+
+Build at: 2024-05-02T09:29:26.131Z - Hash: 610c6efabecb6db3 - Time: 17640ms
 ::endgroup::
 
 
