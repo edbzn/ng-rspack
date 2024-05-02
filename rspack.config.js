@@ -147,14 +147,15 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
             from: 'src/assets',
             to: '.',
             globOptions: {
-              dot: false
-            }
+              dot: false,
+            },
+            noErrorOnMissing: true,
           },
           {
             from: 'src/favicon.ico',
             to: '.',
           },
-        ]
+        ],
       }),
       new ProgressPlugin(),
       new CssExtractRspackPlugin(),
