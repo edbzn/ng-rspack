@@ -156,19 +156,22 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       }),
       new ProgressPlugin(),
       new CssExtractRspackPlugin(),
-      new HtmlRspackPlugin({ minify: true, template: 'src/index.html' }),
+      new HtmlRspackPlugin({
+        minify: false,
+        inject: 'body',
+        scriptLoading: 'module',
+        template: 'src/index.html',
+      }),
       new NamedChunksPlugin(),
       new OccurrencesPlugin({
         aot: true,
-        scriptsOptimization: false,
+        scriptsOptimization: true,
       }),
       new AngularWebpackPlugin({
         tsconfig: './tsconfig.app.json',
         emitClassMetadata: false,
         emitNgModuleScope: false,
         jitMode: false,
-        fileReplacements: {},
-        substitutions: {},
         directTemplateLoading: true,
         compilerOptions: {
           sourceMap: false,
