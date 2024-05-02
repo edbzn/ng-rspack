@@ -16,15 +16,18 @@ const {
   OccurrencesPlugin,
 } = require('@angular-devkit/build-angular/src/tools/webpack/plugins/occurrences-plugin');
 const {
-  SuppressExtractedTextChunksWebpackPlugin,
-} = require('@angular-devkit/build-angular/src/tools/webpack/plugins/suppress-entry-chunks-webpack-plugin');
-
+  JavaScriptOptimizerPlugin,
+} = require('@angular-devkit/build-angular/src/tools/webpack/plugins');
 /**
  * Angular CLI Webpack references:
  *
  * - https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/build_angular/src/tools/webpack/configs/common.ts
  * - https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/build_angular/src/tools/webpack/configs/styles.ts
  */
+
+const { GLOBAL_DEFS_FOR_TERSER_WITH_AOT } = loadEsmModule(
+  '@angular/compiler-cli'
+);
 
 module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
   /**
@@ -34,16 +37,20 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
     ...baseConfig,
     mode: 'production',
     devtool: false,
-    target: ['web', 'es2022'],
+    target: ['web', 'es2015'],
     entry: {
       styles: ['./src/styles.css'],
       polyfills: ['zone.js'],
       main: ['./src/main.ts'],
     },
     resolve: {
-      extensions: ['.ts', '.js'],
+      extensions: ['.ts', '.tsx', '.mjs', '.js'],
+      modules: ['node_modules'],
+      mainFields: ['es2020', 'es2015', 'browser', 'module', 'main'],
+      conditionNames: ['es2020', 'es2015', '...'],
     },
-    stats: 'normal',
+    context: ctx.options.root,
+    node: false,
     output: {
       uniqueName: 'ng-rspack',
       clean: true,
@@ -53,10 +60,12 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       chunkFilename: '[name].[contenthash:20].js',
       crossOriginLoading: false,
       trustedTypes: 'angular#bundler',
+      scriptType: 'module',
     },
     watch: false,
     experiments: {
       asyncWebAssembly: true,
+      topLevelAwait: false,
     },
     module: {
       parser: {
@@ -167,6 +176,13 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
         aot: true,
         scriptsOptimization: true,
       }),
+      new JavaScriptOptimizerPlugin({
+        define: GLOBAL_DEFS_FOR_TERSER_WITH_AOT,
+        sourcemap: false,
+        supportedBrowsers: [],
+        keepIdentifierNames: false,
+        removeLicenses: true,
+      }),
       new AngularWebpackPlugin({
         tsconfig: './tsconfig.app.json',
         emitClassMetadata: false,
@@ -186,3 +202,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
 
   return config;
 });
+
+function loadEsmModule(modulePath) {
+  return new Function('modulePath', `return import(modulePath);`)(modulePath);
+}
