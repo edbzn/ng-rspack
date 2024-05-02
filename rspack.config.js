@@ -1,9 +1,9 @@
 const { composePlugins, withNx, withWeb } = require('@nx/rspack');
 const {
   HtmlRspackPlugin,
-  SwcJsMinimizerRspackPlugin,
   CopyRspackPlugin,
 } = require('@rspack/core');
+const minifyPlugin = require('@rspack/plugin-minify');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const lightningcss = require('lightningcss');
 const browserslist = require('browserslist');
@@ -126,7 +126,9 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
     optimization: {
       minimize: true,
       minimizer: [
-        new SwcJsMinimizerRspackPlugin(),
+        new minifyPlugin({
+          minifier: 'terser',
+        }),
         new CssMinimizerPlugin({
           minify: CssMinimizerPlugin.lightningCssMinify,
           minimizerOptions: {
