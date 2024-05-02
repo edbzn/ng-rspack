@@ -10,8 +10,10 @@ jobs:
         with:
           version: 8
       - run: pnpm install
-      - run: pnpm nx build
-      - run: ls -lah dist/ng-rspack >> build.log
+      - run: pnpm nx run-many -t build build-wp build-es
+      - run: rspack\n >> build.log && ls -lah dist/ng-rspack/rspack >> build.log
+      - run: webpack\n >> build.log && ls -lah dist/ng-rspack/webpack >> build.log
+      - run: esbuild\n >> build.log && ls -lah dist/ng-rspack/esbuild >> build.log
       - run: cat build.log
       - name: Commit build.log
         run: |
