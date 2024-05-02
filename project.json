@@ -44,7 +44,8 @@
       },
       "configurations": {
         "production": {
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "extractLicenses": false
         },
         "development": {
           "buildOptimizer": false,
@@ -80,7 +81,8 @@
       },
       "configurations": {
         "production": {
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "extractLicenses": false
         },
         "development": {
           "optimization": false,
