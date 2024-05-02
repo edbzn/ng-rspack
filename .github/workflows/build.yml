@@ -13,7 +13,7 @@ jobs:
       - run: pnpm nx run-many -t build build-wp build-es >> build.log
       - run: ls -lah dist/ng-rspack/rspack >> build.log
       - run: ls -lah dist/ng-rspack/webpack >> build.log
-      - run: ls -lah dist/ng-rspack/esbuild >> build.log
+      - run: ls -lah dist/ng-rspack/esbuild/browser >> build.log
       - run: cat build.log
       - name: Commit build.log
         run: |
