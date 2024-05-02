@@ -97,9 +97,6 @@ devDependencies:
   '@rspack/core':
     specifier: ^0.6.3
     version: 0.6.3(@swc/helpers@0.5.11)
-  '@rspack/plugin-minify':
-    specifier: ^0.6.3
-    version: 0.6.3
   '@schematics/angular':
     specifier: ~17.3.0
     version: 17.3.6
