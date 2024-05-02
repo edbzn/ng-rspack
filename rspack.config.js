@@ -138,9 +138,6 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       ],
     },
     plugins: [
-      // Following plugin is not working:
-      new SuppressExtractedTextChunksWebpackPlugin(),
-
       new CopyRspackPlugin({
         patterns: [
           {
