@@ -2,6 +2,7 @@ const { composePlugins, withNx, withWeb } = require('@nx/rspack');
 const {
   HtmlRspackPlugin,
   SwcJsMinimizerRspackPlugin,
+  CopyRspackPlugin,
 } = require('@rspack/core');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const lightningcss = require('lightningcss');
@@ -17,6 +18,7 @@ const {
 const {
   SuppressExtractedTextChunksWebpackPlugin,
 } = require('@angular-devkit/build-angular/src/tools/webpack/plugins/suppress-entry-chunks-webpack-plugin');
+
 /**
  * Angular CLI Webpack references:
  *
@@ -139,8 +141,23 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       // Following plugin is not working:
       new SuppressExtractedTextChunksWebpackPlugin(),
 
-      new ProgressPlugin({}),
-      new CssExtractRspackPlugin({}),
+      new CopyRspackPlugin({
+        patterns: [
+          {
+            from: 'src/assets',
+            to: '.',
+            globOptions: {
+              dot: false
+            }
+          },
+          {
+            from: 'src/favicon.ico',
+            to: '.',
+          },
+        ]
+      }),
+      new ProgressPlugin(),
+      new CssExtractRspackPlugin(),
       new HtmlRspackPlugin({ minify: true, template: 'src/index.html' }),
       new NamedChunksPlugin(),
       new OccurrencesPlugin({
