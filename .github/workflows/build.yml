@@ -9,7 +9,7 @@ jobs:
       - uses: pnpm/action-setup@v3
         with:
           version: 8
-      - run: apt install hyperfine
+      - run: sudo apt install hyperfine -y
       - run: pnpm install
       - run: pnpm nx run-many -t build build-wp build-es
       - run: ls -lah dist/ng-rspack/rspack >> build.log
