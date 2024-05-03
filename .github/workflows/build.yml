@@ -16,7 +16,7 @@ jobs:
       - run: ls -lah dist/ng-rspack/webpack >> build.log
       - run: ls -lah dist/ng-rspack/esbuild/browser >> build.log
       - run: cat build.log
-      - run: hyperfine --warmup 0 --runs 1 -n "Webpack" "pnpm nx build-wp" -n "Rspack" "pnpm nx build" -n "Esbuild" "pnpm nx build-es" --export-markdown perf.md
+      - run: hyperfine -n "Webpack" "pnpm nx build-wp" -n "Rspack" "pnpm nx build" -n "Esbuild" "pnpm nx build-es" --prepare "rm -rf .angular dist" --export-markdown perf.md
       - name: Commit & Push
         run: |
           git config --local user.email "bozonedouard@gmail.com"
