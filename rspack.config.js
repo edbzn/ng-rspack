@@ -88,7 +88,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
         },
         // Component styles
         {
-          test: /\.?(scss)$/,
+          test: /\.(sa|sc|c)ss$/,
           resourceQuery: /\?ngResource/,
           use: [
             {
@@ -101,11 +101,6 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
               },
             },
           ],
-        },
-        {
-          test: /\.?(css)$/,
-          resourceQuery: /\?ngResource/,
-          use: [],
         },
         {
           // Mark files inside `rxjs/add` as containing side effects.
