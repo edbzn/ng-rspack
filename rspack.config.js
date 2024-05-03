@@ -10,15 +10,6 @@ const browserslist = require('browserslist');
 const { AngularWebpackPlugin } = require('@ngtools/webpack');
 const { ProgressPlugin, CssExtractRspackPlugin } = require('@rspack/core');
 const {
-  NamedChunksPlugin,
-} = require('@angular-devkit/build-angular/src/tools/webpack/plugins/named-chunks-plugin');
-const {
-  OccurrencesPlugin,
-} = require('@angular-devkit/build-angular/src/tools/webpack/plugins/occurrences-plugin');
-const {
-  JavaScriptOptimizerPlugin,
-} = require('@angular-devkit/build-angular/src/tools/webpack/plugins');
-const {
   getSupportedBrowsers,
 } = require('@angular-devkit/build-angular/src/utils/supported-browsers');
 
@@ -28,10 +19,6 @@ const {
  * - https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/build_angular/src/tools/webpack/configs/common.ts
  * - https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/build_angular/src/tools/webpack/configs/styles.ts
  */
-
-const { GLOBAL_DEFS_FOR_TERSER_WITH_AOT } = loadEsmModule(
-  '@angular/compiler-cli'
-);
 
 const supportedBrowsers = getSupportedBrowsers();
 
@@ -180,18 +167,6 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
         scriptLoading: 'module',
         template: 'src/index.html',
       }),
-      new NamedChunksPlugin(),
-      new OccurrencesPlugin({
-        aot: true,
-        scriptsOptimization: true,
-      }),
-      new JavaScriptOptimizerPlugin({
-        define: GLOBAL_DEFS_FOR_TERSER_WITH_AOT,
-        sourcemap: false,
-        supportedBrowsers,
-        keepIdentifierNames: false,
-        removeLicenses: true,
-      }),
       new AngularWebpackPlugin({
         tsconfig: './tsconfig.app.json',
         emitClassMetadata: false,
@@ -211,7 +186,3 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
 
   return config;
 });
-
-function loadEsmModule(modulePath) {
-  return new Function('modulePath', `return import(modulePath);`)(modulePath);
-}
