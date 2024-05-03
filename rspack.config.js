@@ -18,6 +18,10 @@ const {
 const {
   JavaScriptOptimizerPlugin,
 } = require('@angular-devkit/build-angular/src/tools/webpack/plugins');
+const {
+  getSupportedBrowsers,
+} = require('@angular-devkit/build-angular/src/utils/supported-browsers');
+
 /**
  * Angular CLI Webpack references:
  *
@@ -28,6 +32,8 @@ const {
 const { GLOBAL_DEFS_FOR_TERSER_WITH_AOT } = loadEsmModule(
   '@angular/compiler-cli'
 );
+
+const supportedBrowsers = getSupportedBrowsers();
 
 module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
   /**
@@ -101,9 +107,17 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
           resourceQuery: /\?ngResource/,
           use: [],
         },
-        { test: /[/\\]rxjs[/\\]add[/\\].+\.js$/, sideEffects: true },
+        {
+          // Mark files inside `rxjs/add` as containing side effects.
+          // If this is fixed upstream and the fixed version becomes the minimum
+          // supported version, this can be removed.
+          test: /[/\\]rxjs[/\\]add[/\\].+\.js$/,
+          sideEffects: true,
+        },
         {
           test: /\.[cm]?[tj]sx?$/,
+          // The below is needed due to a bug in `@babel/runtime`. See: https://github.com/babel/babel/issues/12824
+          resolve: { fullySpecified: false },
           exclude: [
             /[\\/]node_modules[/\\](?:core-js|@babel|tslib|web-animations-js|web-streams-polyfill|whatwg-url)[/\\]/,
           ],
@@ -116,7 +130,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
                 cacheDirectory: false,
                 aot: true,
                 optimize: true,
-                supportedBrowsers: ['chrome 124'],
+                supportedBrowsers,
               },
             },
           ],
@@ -140,7 +154,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
           minify: CssMinimizerPlugin.lightningCssMinify,
           minimizerOptions: {
             targets: lightningcss.browserslistToTargets(
-              browserslist('last 1 Chrome versions')
+              browserslist(supportedBrowsers)
             ),
           },
         }),
@@ -179,7 +193,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       new JavaScriptOptimizerPlugin({
         define: GLOBAL_DEFS_FOR_TERSER_WITH_AOT,
         sourcemap: false,
-        supportedBrowsers: [],
+        supportedBrowsers,
         keepIdentifierNames: false,
         removeLicenses: true,
       }),
