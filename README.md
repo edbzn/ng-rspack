@@ -7,4 +7,5 @@ nx build
 nx serve
 ```
 
-See [build.log](./build.log) for checking bundle size difference between builds.
+- See [build.log](./build.log) for comparing bundle size between builds.
+- See [perf.md](./perf.md) for comparing performance between bundlers on the last build.
