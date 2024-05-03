@@ -9,11 +9,13 @@ jobs:
       - uses: pnpm/action-setup@v3
         with:
           version: 8
+      - run: apt install hyperfine
       - run: pnpm install
-      - run: pnpm nx run-many -t build build-wp build-es | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" >> build.log
+      - run: pnpm nx run-many -t build build-wp build-es
       - run: ls -lah dist/ng-rspack/rspack >> build.log
       - run: ls -lah dist/ng-rspack/webpack >> build.log
       - run: ls -lah dist/ng-rspack/esbuild/browser >> build.log
+      - run: hyperfine --warmup 1 --min-runs 10 -n "Webpack" "nx build-wp" -n "Rspack" "nx build" -n "Esbuild" "nx build-es" --export-markdown perf.md
       - run: cat build.log
       - name: Commit build.log
         run: |
