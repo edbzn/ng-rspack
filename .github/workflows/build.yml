@@ -15,14 +15,14 @@ jobs:
       - run: ls -lah dist/ng-rspack/rspack >> build.log
       - run: ls -lah dist/ng-rspack/webpack >> build.log
       - run: ls -lah dist/ng-rspack/esbuild/browser >> build.log
-      - run: hyperfine --warmup 1 --min-runs 10 -n "Webpack" "nx build-wp" -n "Rspack" "nx build" -n "Esbuild" "nx build-es" --export-markdown perf.md
+      - run: hyperfine --warmup 3 --min-runs 10 -n "Webpack" "pnpm nx build-wp" -n "Rspack" "pnpm nx build" -n "Esbuild" "pnpm nx build-es" --export-markdown perf.md
       - run: cat build.log
       - name: Commit build.log
         run: |
           git config --local user.email "bozonedouard@gmail.com"
           git config --local user.name "Edouard Bozon"
-          git add build.log
-          git commit -m "docs: update build.log"
+          git add build.log perf.md
+          git commit -m "chore: update perf logs"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
