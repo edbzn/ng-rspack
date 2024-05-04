@@ -32,7 +32,6 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
     devtool: false,
     target: ['web', 'es2015'],
     entry: {
-      styles: ['./src/styles.css'],
       polyfills: ['zone.js'],
       main: ['./src/main.ts'],
     },
@@ -42,7 +41,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       mainFields: ['es2020', 'es2015', 'browser', 'module', 'main'],
       conditionNames: ['es2020', 'es2015', '...'],
     },
-    context: ctx.options.root,
+    context: __dirname,
     node: false,
     output: {
       uniqueName: 'ng-rspack',
@@ -68,6 +67,22 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
         },
       },
       rules: [
+        // Global assets
+        {
+          test: /\.?(sass|scss)$/,
+          resourceQuery: /\?ngGlobalStyle/,
+          use: [
+            {
+              loader: 'sass-loader',
+              options: {
+                implementation: require('sass'),
+              },
+            },
+          ],
+          type: 'css/auto',
+        },
+
+        // Component templates
         {
           test: /\.?(svg|html)$/,
           resourceQuery: /\?ngResource/,
@@ -75,7 +90,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
         },
         // Component styles
         {
-          test: /\.(sa|sc|c)ss$/,
+          test: /\.?(sa|sc|c)ss$/,
           resourceQuery: /\?ngResource/,
           use: [
             {
@@ -143,6 +158,13 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       ],
     },
     plugins: [
+      new StylesWebpackPlugin({
+        root: __dirname,
+        entryPoints: {
+          styles: ['src/styles.css'],
+        },
+        preserveSymlinks: false,
+      }),
       new CopyRspackPlugin({
         patterns: [
           {
@@ -186,3 +208,56 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
 
   return config;
 });
+
+const PLUGIN_NAME = 'styles-webpack-plugin';
+
+/**
+ * Ported from Angular CLI Webpack plugin.
+ * https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/build_angular/src/tools/webpack/plugins/styles-webpack-plugin.ts
+ */
+class StylesWebpackPlugin {
+  options;
+  compilation;
+  constructor(options) {
+    this.options = options;
+  }
+  apply(compiler) {
+    const { entryPoints, preserveSymlinks, root } = this.options;
+    const resolver = compiler.resolverFactory.get('global-styles', {
+      conditionNames: ['sass', 'less', 'style'],
+      mainFields: ['sass', 'less', 'style', 'main', '...'],
+      extensions: ['.scss', '.sass', '.less', '.css'],
+      restrictions: [/\.((le|sa|sc|c)ss)$/i],
+      preferRelative: true,
+      useSyncFileSystemCalls: true,
+      symlinks: !preserveSymlinks,
+      fileSystem: compiler.inputFileSystem,
+    });
+    const webpackOptions = compiler.options;
+    compiler.hooks.environment.tap(PLUGIN_NAME, () => {
+      const entrypoints = webpackOptions.entry;
+      for (const [bundleName, paths] of Object.entries(entryPoints)) {
+        entrypoints[bundleName] ??= {};
+        const entryImport = (entrypoints[bundleName].import ??= []);
+        for (const path of paths) {
+          try {
+            const resolvedPath = resolver.resolveSync({}, root, path);
+            if (resolvedPath) {
+              entryImport.push(`${resolvedPath}?ngGlobalStyle`);
+            } else {
+              console.error('Compilation cannot be undefined.');
+              throw new Error(`Cannot resolve '${path}'.`);
+            }
+          } catch (error) {
+            console.error('Compilation cannot be undefined.');
+            throw error;
+          }
+        }
+      }
+      return entrypoints;
+    });
+    compiler.hooks.thisCompilation.tap(PLUGIN_NAME, (compilation) => {
+      this.compilation = compilation;
+    });
+  }
+}
