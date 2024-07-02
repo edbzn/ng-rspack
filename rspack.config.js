@@ -3,15 +3,28 @@ const {
   HtmlRspackPlugin,
   SwcJsMinimizerRspackPlugin,
   CopyRspackPlugin,
+  javascript,
 } = require('@rspack/core');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const lightningcss = require('lightningcss');
 const browserslist = require('browserslist');
+const terserPlugin = require('terser-webpack-plugin');
 const { AngularWebpackPlugin } = require('@ngtools/webpack');
 const { ProgressPlugin, CssExtractRspackPlugin } = require('@rspack/core');
 const {
   getSupportedBrowsers,
+  
 } = require('@angular-devkit/build-angular/src/utils/supported-browsers');
+const {
+  JavaScriptOptimizerPlugin,
+} = require('@angular-devkit/build-angular/src/tools/webpack/plugins/javascript-optimizer-plugin');
+const {
+  TransferSizePlugin
+} = require('@angular-devkit/build-angular/src/tools/webpack/plugins/transfer-size-plugin');
+const {
+  CssOptimizerPlugin
+} = require('@angular-devkit/build-angular/src/tools/webpack/plugins/css-optimizer-plugin');
+
 const path = require('path');
 
 /**
@@ -151,15 +164,19 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
     optimization: {
       minimize: true,
       minimizer: [
-        new SwcJsMinimizerRspackPlugin(),
-        new CssMinimizerPlugin({
-          minify: CssMinimizerPlugin.lightningCssMinify,
-          minimizerOptions: {
-            targets: lightningcss.browserslistToTargets(
-              browserslist(supportedBrowsers)
-            ),
+        new JavaScriptOptimizerPlugin({
+          advanced:true,
+          define: {
+            ngDevMode: false,
+            ngI18nClosureMode: false,
+            ngJitMode:false
           },
+          keepIdentifierNames:false,
+          removeLicenses:true,
+          sourcemap:false,
         }),
+        new TransferSizePlugin(),
+        new CssOptimizerPlugin({})
       ],
     },
     plugins: [
