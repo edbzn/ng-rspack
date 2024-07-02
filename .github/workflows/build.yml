@@ -12,9 +12,9 @@ jobs:
       - run: sudo apt install hyperfine -y
       - run: pnpm install
       - run: pnpm nx run-many -t build build-wp build-es
-      - run: ls -lah dist/ng-rspack/rspack >> build.log
-      - run: ls -lah dist/ng-rspack/webpack >> build.log
-      - run: ls -lah dist/ng-rspack/esbuild/browser >> build.log
+      - run: echo "rspack \n" >> build.log && ls -lah dist/ng-rspack/rspack >> build.log
+      - run: echo "webpack \n" >> build.log && ls -lah dist/ng-rspack/webpack >> build.log
+      - run: echo "esbuild \n" >> build.log && ls -lah dist/ng-rspack/esbuild/browser >> build.log
       - run: cat build.log
       - run: hyperfine -n "Webpack" "pnpm nx build-wp" -n "Rspack" "pnpm nx build" -n "Esbuild" "pnpm nx build-es" --prepare "rm -rf .angular dist" --export-markdown perf.md
       - name: Commit & Push
