@@ -1187,3 +1187,32 @@ drwxr-xr-x 3 runner docker 4.0K May 17 06:43 ..
 -rw-r--r-- 1 runner docker 184K May 17 06:43 main-BW2E7W2F.js
 -rw-r--r-- 1 runner docker  34K May 17 06:43 polyfills-BL375M6J.js
 -rw-r--r-- 1 runner docker   85 May 17 06:43 styles-IXCL2UTK.css
+rspack \n
+total 468K
+drwxr-xr-x 2 runner docker 4.0K Jul  2 07:43 .
+drwxr-xr-x 5 runner docker 4.0K Jul  2 07:43 ..
+-rw-r--r-- 1 runner docker  15K Jul  2 07:43 favicon.ico
+-rw-r--r-- 1 runner docker  590 Jul  2 07:43 index.html
+-rw-r--r-- 1 runner docker 396K Jul  2 07:43 main.9d6c4a7ef06a440f2f1f.js
+-rw-r--r-- 1 runner docker  34K Jul  2 07:43 polyfills.09ccf75527eaf59b0d6c.js
+-rw-r--r-- 1 runner docker  617 Jul  2 07:43 styles.e0e7fda7ebfe4a6f6d6e.js
+-rw-r--r-- 1 runner docker   84 Jul  2 07:43 styles.ef645d29da02e6aca141.css
+webpack \n
+total 256K
+drwxr-xr-x 2 runner docker 4.0K Jul  2 07:43 .
+drwxr-xr-x 5 runner docker 4.0K Jul  2 07:43 ..
+-rw-r--r-- 1 runner docker  15K Jul  2 07:43 favicon.ico
+-rw-r--r-- 1 runner docker  809 Jul  2 07:43 index.html
+-rw-r--r-- 1 runner docker 182K Jul  2 07:43 main.a93b483def359c1e.js
+-rw-r--r-- 1 runner docker  34K Jul  2 07:43 polyfills.6e67a244f817e3e4.js
+-rw-r--r-- 1 runner docker  896 Jul  2 07:43 runtime.6c9861ca6e26c512.js
+-rw-r--r-- 1 runner docker   85 Jul  2 07:43 styles.9cc1c87275a936d2.css
+esbuild \n
+total 252K
+drwxr-xr-x 2 runner docker 4.0K Jul  2 07:43 .
+drwxr-xr-x 3 runner docker 4.0K Jul  2 07:43 ..
+-rw-r--r-- 1 runner docker  15K Jul  2 07:43 favicon.ico
+-rw-r--r-- 1 runner docker  713 Jul  2 07:43 index.html
+-rw-r--r-- 1 runner docker 184K Jul  2 07:43 main-HPEBSWYP.js
+-rw-r--r-- 1 runner docker  34K Jul  2 07:43 polyfills-PSWKUJN4.js
+-rw-r--r-- 1 runner docker   85 Jul  2 07:43 styles-IXCL2UTK.css
