@@ -12,6 +12,7 @@ const { ProgressPlugin, CssExtractRspackPlugin } = require('@rspack/core');
 const {
   getSupportedBrowsers,
 } = require('@angular-devkit/build-angular/src/utils/supported-browsers');
+const path = require('path');
 
 /**
  * Angular CLI Webpack references:
@@ -46,7 +47,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
     output: {
       uniqueName: 'ng-rspack',
       clean: true,
-      path: ctx.options.outputPath,
+      path: path.resolve(__dirname, ctx.options.outputPath),
       publicPath: '',
       filename: '[name].[contenthash:20].js',
       chunkFilename: '[name].[contenthash:20].js',
@@ -58,6 +59,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
     experiments: {
       asyncWebAssembly: true,
       topLevelAwait: false,
+      css: true,
     },
     module: {
       parser: {
@@ -69,17 +71,19 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       rules: [
         // Global assets
         {
-          test: /\.?(sass|scss)$/,
+          test: /\.?(sa|sc|c)ss$/,
           resourceQuery: /\?ngGlobalStyle/,
           use: [
             {
               loader: 'sass-loader',
               options: {
-                implementation: require('sass'),
+                api: 'modern-compiler',
+                implementation: require.resolve('sass-embedded'),
               },
             },
+
           ],
-          type: 'css/auto',
+          type: 'css'
         },
 
         // Component templates
@@ -97,9 +101,10 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
               loader: require.resolve('raw-loader'),
             },
             {
-              loader: require.resolve('sass-loader'),
+              loader: 'sass-loader',
               options: {
-                implementation: require('sass'),
+                api: 'modern-compiler',
+                implementation: require.resolve('sass-embedded'),
               },
             },
           ],
