@@ -39,8 +39,8 @@
     "@nx/js": "18.3.4",
     "@nx/rspack": "^18.3.0",
     "@nx/workspace": "18.3.4",
-    "@rspack/cli": "0.7.0-beta.0",
-    "@rspack/core": "0.7.0-beta.0",
+    "@rspack/cli": "1.0.0-alpha.0",
+    "@rspack/core": "1.0.0-alpha.0",
     "@schematics/angular": "~17.3.0",
     "@swc-node/register": "~1.8.0",
     "@swc/core": "~1.3.85",
@@ -69,5 +69,6 @@
   },
   "nx": {
     "includedScripts": []
-  }
+  },
+  "packageManager": "pnpm@9.1.1+sha512.14e915759c11f77eac07faba4d019c193ec8637229e62ec99eefb7cf3c3b75c64447882b7c485142451ee3a6b408059cdfb7b7fa0341b975f12d0f7629c71195"
 }
