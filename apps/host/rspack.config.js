@@ -275,8 +275,11 @@ class StylesWebpackPlugin {
       }
       return entrypoints;
     });
-    compiler.hooks.thisCompilation.tap('styles-webpack-plugin', (compilation) => {
-      this.compilation = compilation;
-    });
+    compiler.hooks.thisCompilation.tap(
+      'styles-webpack-plugin',
+      (compilation) => {
+        this.compilation = compilation;
+      }
+    );
   }
 }

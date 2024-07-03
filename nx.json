@@ -32,5 +32,5 @@
       }
     }
   },
-  "defaultProject": "ng-rspack"
+  "defaultProject": "host"
 }

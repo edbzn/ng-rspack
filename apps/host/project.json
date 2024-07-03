@@ -1,9 +1,9 @@
 {
-  "name": "ng-rspack",
+  "name": "host",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/ng-rspack/src",
+  "sourceRoot": "apps/host/src",
   "tags": [],
   "targets": {
     "build": {
@@ -11,14 +11,11 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "target": "web",
-        "rspackConfig": "apps/ng-rspack/rspack.config.js",
+        "rspackConfig": "apps/host/rspack.config.js",
         "outputPath": "dist/ng-rspack/rspack",
-        "main": "apps/ng-rspack/src/main.ts",
-        "tsConfig": "apps/ng-rspack/tsconfig.app.json",
-        "assets": [
-          "apps/ng-rspack/src/favicon.ico",
-          "apps/ng-rspack/src/assets"
-        ]
+        "main": "apps/host/src/main.ts",
+        "tsConfig": "apps/host/tsconfig.app.json",
+        "assets": ["apps/host/src/favicon.ico", "apps/host/src/assets"]
       },
       "configurations": {
         "development": {
@@ -37,15 +34,12 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/ng-rspack/webpack",
-        "index": "apps/ng-rspack/src/index.html",
-        "main": "apps/ng-rspack/src/main.ts",
+        "index": "apps/host/src/index.html",
+        "main": "apps/host/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/ng-rspack/tsconfig.app.json",
-        "assets": [
-          "apps/ng-rspack/src/favicon.ico",
-          "apps/ng-rspack/src/assets"
-        ],
-        "styles": ["apps/ng-rspack/src/styles.css"],
+        "tsConfig": "apps/host/tsconfig.app.json",
+        "assets": ["apps/host/src/favicon.ico", "apps/host/src/assets"],
+        "styles": ["apps/host/src/styles.css"],
         "scripts": []
       },
       "configurations": {
@@ -69,15 +63,12 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/ng-rspack/esbuild",
-        "index": "apps/ng-rspack/src/index.html",
-        "browser": "apps/ng-rspack/src/main.ts",
+        "index": "apps/host/src/index.html",
+        "browser": "apps/host/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/ng-rspack/tsconfig.app.json",
-        "assets": [
-          "apps/ng-rspack/src/favicon.ico",
-          "apps/ng-rspack/src/assets"
-        ],
-        "styles": ["apps/ng-rspack/src/styles.css"],
+        "tsConfig": "apps/host/tsconfig.app.json",
+        "assets": ["apps/host/src/favicon.ico", "apps/host/src/assets"],
+        "styles": ["apps/host/src/styles.css"],
         "scripts": []
       },
       "configurations": {
@@ -97,7 +88,7 @@
       "executor": "@nx/rspack:dev-server",
       "configurations": {
         "development": {
-          "buildTarget": "ng-rspack:build:development"
+          "buildTarget": "host:build:development"
         }
       },
       "defaultConfiguration": "development"
