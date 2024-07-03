@@ -1,9 +1,9 @@
 {
   "name": "ng-rspack",
-  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/ng-rspack/src",
   "tags": [],
   "targets": {
     "build": {
@@ -13,9 +13,12 @@
         "target": "web",
         "rspackConfig": "rspack.config.js",
         "outputPath": "dist/ng-rspack/rspack",
-        "main": "src/main.ts",
-        "tsConfig": "tsconfig.app.json",
-        "assets": ["src/favicon.ico", "src/assets"]
+        "main": "apps/ng-rspack/src/main.ts",
+        "tsConfig": "apps/ng-rspack/tsconfig.app.json",
+        "assets": [
+          "apps/ng-rspack/src/favicon.ico",
+          "apps/ng-rspack/src/assets"
+        ]
       },
       "configurations": {
         "development": {
@@ -34,12 +37,15 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/ng-rspack/webpack",
-        "index": "src/index.html",
-        "main": "src/main.ts",
+        "index": "apps/ng-rspack/src/index.html",
+        "main": "apps/ng-rspack/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "tsconfig.app.json",
-        "assets": ["src/favicon.ico", "src/assets"],
-        "styles": ["src/styles.css"],
+        "tsConfig": "apps/ng-rspack/tsconfig.app.json",
+        "assets": [
+          "apps/ng-rspack/src/favicon.ico",
+          "apps/ng-rspack/src/assets"
+        ],
+        "styles": ["apps/ng-rspack/src/styles.css"],
         "scripts": []
       },
       "configurations": {
@@ -60,23 +66,18 @@
     },
     "build-es": {
       "executor": "@nx/angular:application",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/ng-rspack/esbuild",
-        "index": "src/index.html",
-        "browser": "src/main.ts",
-        "polyfills": [
-          "zone.js"        ],
-        "tsConfig": "tsconfig.app.json",
+        "index": "apps/ng-rspack/src/index.html",
+        "browser": "apps/ng-rspack/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/ng-rspack/tsconfig.app.json",
         "assets": [
-          "src/favicon.ico",
-          "src/assets"
+          "apps/ng-rspack/src/favicon.ico",
+          "apps/ng-rspack/src/assets"
         ],
-        "styles": [
-          "src/styles.css"
-        ],
+        "styles": ["apps/ng-rspack/src/styles.css"],
         "scripts": []
       },
       "configurations": {
