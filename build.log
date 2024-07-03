@@ -1274,3 +1274,40 @@ drwxr-xr-x 3 runner docker 4.0K Jul  3 11:50 ..
 -rw-r--r-- 1 runner docker 184K Jul  3 11:50 main-FS4FMQS6.js
 -rw-r--r-- 1 runner docker  34K Jul  3 11:50 polyfills-PSWKUJN4.js
 -rw-r--r-- 1 runner docker   85 Jul  3 11:50 styles-IXCL2UTK.css
+rspack
+total 772K
+drwxr-xr-x 2 runner docker 4.0K Jul  3 21:12 .
+drwxr-xr-x 5 runner docker 4.0K Jul  3 21:12 ..
+-rw-r--r-- 1 runner docker 253K Jul  3 21:12 259.f0e21c407afaefc92d1b.js
+-rw-r--r-- 1 runner docker  67K Jul  3 21:12 487.63372d6c43d732c1909b.js
+-rw-r--r-- 1 runner docker  179 Jul  3 21:12 @mf-types.d.ts
+-rw-r--r-- 1 runner docker 1.1K Jul  3 21:12 @mf-types.zip
+-rw-r--r-- 1 runner docker 1.7K Jul  3 21:12 __federation_expose_app.b2c07e48a83e66498338.js
+-rw-r--r-- 1 runner docker  15K Jul  3 21:12 favicon.ico
+-rw-r--r-- 1 runner docker  766 Jul  3 21:12 index.html
+-rw-r--r-- 1 runner docker  99K Jul  3 21:12 main.2a763284103d89113f8d.js
+-rw-r--r-- 1 runner docker 1.8K Jul  3 21:12 mf-manifest.json
+-rw-r--r-- 1 runner docker 2.1K Jul  3 21:12 mf-stats.json
+-rw-r--r-- 1 runner docker  85K Jul  3 21:12 mfe1.11f8eef18944cc678363.js
+-rw-r--r-- 1 runner docker 119K Jul  3 21:12 polyfills.19572ff317c15969b5b1.js
+-rw-r--r-- 1 runner docker   85 Jul  3 21:12 styles.9772180243f969fe9c99.css
+-rw-r--r-- 1 runner docker  86K Jul  3 21:12 styles.c235a767cf7f0bf7c11f.js
+webpack
+total 160K
+drwxr-xr-x 2 runner docker 4.0K Jul  3 21:12 .
+drwxr-xr-x 5 runner docker 4.0K Jul  3 21:12 ..
+-rw-r--r-- 1 runner docker  15K Jul  3 21:12 favicon.ico
+-rw-r--r-- 1 runner docker  809 Jul  3 21:12 index.html
+-rw-r--r-- 1 runner docker  86K Jul  3 21:12 main.37ed97ca0e4da807.js
+-rw-r--r-- 1 runner docker  34K Jul  3 21:12 polyfills.733c87b21f3ac969.js
+-rw-r--r-- 1 runner docker  886 Jul  3 21:12 runtime.d947c069a8b27bc8.js
+-rw-r--r-- 1 runner docker   85 Jul  3 21:12 styles.9cc1c87275a936d2.css
+esbuild
+total 156K
+drwxr-xr-x 2 runner docker 4.0K Jul  3 21:11 .
+drwxr-xr-x 3 runner docker 4.0K Jul  3 21:11 ..
+-rw-r--r-- 1 runner docker  15K Jul  3 21:11 favicon.ico
+-rw-r--r-- 1 runner docker  713 Jul  3 21:11 index.html
+-rw-r--r-- 1 runner docker  88K Jul  3 21:11 main-S7F6LYFR.js
+-rw-r--r-- 1 runner docker  34K Jul  3 21:11 polyfills-PSWKUJN4.js
+-rw-r--r-- 1 runner docker   85 Jul  3 21:11 styles-IXCL2UTK.css
