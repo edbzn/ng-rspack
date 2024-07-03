@@ -86,6 +86,9 @@
     },
     "serve": {
       "executor": "@nx/rspack:dev-server",
+      "options": {
+        "port": 3001
+      },
       "configurations": {
         "development": {
           "buildTarget": "mfe1:build:development"

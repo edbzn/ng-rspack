@@ -23,7 +23,7 @@ const {
 const {
   CssOptimizerPlugin,
 } = require('@angular-devkit/build-angular/src/tools/webpack/plugins/css-optimizer-plugin');
-
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const path = require('path');
 const { workspaceRoot } = require('@nx/devkit');
 
@@ -56,15 +56,23 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       conditionNames: ['es2020', 'es2015', '...'],
     },
     context: __dirname,
+    devServer: {
+      client: {
+        overlay: {
+          errors: true,
+          warnings: false,
+          runtimeErrors: true,
+        },
+      },
+    },
     node: false,
     output: {
-      uniqueName: 'ng-rspack',
+      uniqueName: 'host',
       clean: true,
       path: path.resolve(workspaceRoot, ctx.options.outputPath),
-      publicPath: '',
       filename: '[name].[contenthash:20].js',
       chunkFilename: '[name].[contenthash:20].js',
-      crossOriginLoading: false,
+      crossOriginLoading: 'anonymous',
       trustedTypes: 'angular#bundler',
       scriptType: 'module',
     },
@@ -223,6 +231,14 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
           preserveSymlinks: false,
         },
         inlineStyleFileExtension: 'css',
+      }),
+      new ModuleFederationPlugin({
+        name: 'host',
+        remotes: {
+          mfe1: 'mfe1@http://localhost:3001/mf-manifest.json',
+          mfe2: 'mfe2@http://localhost:3002/mf-manifest.json',
+        },
+        shared: ['@angular/core', '@angular/common', '@angular/router'],
       }),
     ],
   };

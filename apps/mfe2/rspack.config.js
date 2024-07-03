@@ -23,7 +23,7 @@ const {
 const {
   CssOptimizerPlugin,
 } = require('@angular-devkit/build-angular/src/tools/webpack/plugins/css-optimizer-plugin');
-
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack');
 const path = require('path');
 const { workspaceRoot } = require('@nx/devkit');
 
@@ -57,11 +57,25 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
     },
     context: __dirname,
     node: false,
+    devServer: {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+      },
+      client: {
+        overlay: {
+          errors: true,
+          warnings: false,
+          runtimeErrors: true,
+        },
+      },
+    },
     output: {
-      uniqueName: 'ng-rspack',
+      uniqueName: 'mfe2',
       clean: true,
       path: path.resolve(workspaceRoot, ctx.options.outputPath),
-      publicPath: '',
+      publicPath: 'http://localhost:3002/',
       filename: '[name].[contenthash:20].js',
       chunkFilename: '[name].[contenthash:20].js',
       crossOriginLoading: false,
@@ -223,6 +237,13 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
           preserveSymlinks: false,
         },
         inlineStyleFileExtension: 'css',
+      }),
+      new ModuleFederationPlugin({
+        name: 'mfe2',
+        exposes: {
+          './app': './src/app/app.component.ts'
+        },
+        shared: ['@angular/core', '@angular/common', '@angular/router'],
       }),
     ],
   };
