@@ -5,4 +5,14 @@
 
 a {
   text-decoration: none;
+  font-weight: bold;
+}
+
+img {
+  max-width: 28px;
+  max-height: 28px;
+  display: inline-block;
+  margin: 0 4px;
+  position: relative;
+  top: 6px;
 }

@@ -1,15 +1,11 @@
-<h1>{{ title }}</h1>
-
-<main>
-  <section>
-    <img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" />
-    +
-    <img src="https://assets.rspack.dev/rspack/rspack-logo.svg" />
-    +
-    <img
-      src="https://angular.dev/assets/images/press-kit/angular_icon_gradient.gif"
-    />
-  </section>
-</main>
-
-<app-footer />
+<nav>
+  <ul>
+    <li>
+      <a routerLink="/mfe1" routerLinkActive="active">mfe1</a>
+      <a routerLink="/mfe2" routerLinkActive="active">mfe2</a>
+    </li>
+  </ul>
+</nav>
+<h1>Welcome to the Host application</h1>
+<router-outlet/>
+<app-footer/>
