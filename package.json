@@ -37,6 +37,7 @@
     "@nx/eslint-plugin": "18.3.4",
     "@nx/jest": "18.3.4",
     "@nx/js": "18.3.4",
+    "@nx/devkit": "18.3.4",
     "@nx/rspack": "^18.3.0",
     "@nx/workspace": "18.3.4",
     "@rspack/cli": "1.0.0-alpha.0",

@@ -79,6 +79,9 @@ importers:
       '@ngtools/webpack':
         specifier: ^17.3.6
         version: 17.3.6(@angular/compiler-cli@17.3.6(@angular/compiler@17.3.6(@angular/core@17.3.6(rxjs@7.8.1)(zone.js@0.14.4)))(typescript@5.4.5))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.3.107(@swc/helpers@0.5.11))(esbuild@0.19.12))
+      '@nx/devkit':
+        specifier: 18.3.4
+        version: 18.3.4(nx@18.3.4(@swc-node/register@1.8.0(@swc/core@1.3.107(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.4.5))(@swc/core@1.3.107(@swc/helpers@0.5.11)))
       '@nx/eslint':
         specifier: 18.3.4
         version: 18.3.4(@babel/traverse@7.24.5)(@swc-node/register@1.8.0(@swc/core@1.3.107(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.4.5))(@swc/core@1.3.107(@swc/helpers@0.5.11))(@types/node@18.16.9)(js-yaml@4.1.0)(nx@18.3.4(@swc-node/register@1.8.0(@swc/core@1.3.107(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.4.5))(@swc/core@1.3.107(@swc/helpers@0.5.11)))

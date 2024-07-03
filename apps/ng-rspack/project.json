@@ -11,7 +11,7 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "target": "web",
-        "rspackConfig": "rspack.config.js",
+        "rspackConfig": "apps/ng-rspack/rspack.config.js",
         "outputPath": "dist/ng-rspack/rspack",
         "main": "apps/ng-rspack/src/main.ts",
         "tsConfig": "apps/ng-rspack/tsconfig.app.json",

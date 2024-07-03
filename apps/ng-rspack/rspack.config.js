@@ -13,19 +13,19 @@ const { AngularWebpackPlugin } = require('@ngtools/webpack');
 const { ProgressPlugin, CssExtractRspackPlugin } = require('@rspack/core');
 const {
   getSupportedBrowsers,
-  
 } = require('@angular-devkit/build-angular/src/utils/supported-browsers');
 const {
   JavaScriptOptimizerPlugin,
 } = require('@angular-devkit/build-angular/src/tools/webpack/plugins/javascript-optimizer-plugin');
 const {
-  TransferSizePlugin
+  TransferSizePlugin,
 } = require('@angular-devkit/build-angular/src/tools/webpack/plugins/transfer-size-plugin');
 const {
-  CssOptimizerPlugin
+  CssOptimizerPlugin,
 } = require('@angular-devkit/build-angular/src/tools/webpack/plugins/css-optimizer-plugin');
 
 const path = require('path');
+const { workspaceRoot } = require('@nx/devkit');
 
 /**
  * Angular CLI Webpack references:
@@ -60,7 +60,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
     output: {
       uniqueName: 'ng-rspack',
       clean: true,
-      path: path.resolve(__dirname, ctx.options.outputPath),
+      path: path.resolve(workspaceRoot, ctx.options.outputPath),
       publicPath: '',
       filename: '[name].[contenthash:20].js',
       chunkFilename: '[name].[contenthash:20].js',
@@ -94,9 +94,8 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
                 implementation: require.resolve('sass-embedded'),
               },
             },
-
           ],
-          type: 'css'
+          type: 'css',
         },
 
         // Component templates
@@ -165,18 +164,18 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       minimize: true,
       minimizer: [
         new JavaScriptOptimizerPlugin({
-          advanced:true,
+          advanced: true,
           define: {
             ngDevMode: false,
             ngI18nClosureMode: false,
-            ngJitMode:false
+            ngJitMode: false,
           },
-          keepIdentifierNames:false,
-          removeLicenses:true,
-          sourcemap:false,
+          keepIdentifierNames: false,
+          removeLicenses: true,
+          sourcemap: false,
         }),
         new TransferSizePlugin(),
-        new CssOptimizerPlugin({})
+        new CssOptimizerPlugin(),
       ],
     },
     plugins: [
@@ -212,7 +211,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
         template: 'src/index.html',
       }),
       new AngularWebpackPlugin({
-        tsconfig: './tsconfig.app.json',
+        tsconfig: path.resolve(__dirname, 'tsconfig.app.json'),
         emitClassMetadata: false,
         emitNgModuleScope: false,
         jitMode: false,
@@ -230,8 +229,6 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
 
   return config;
 });
-
-const PLUGIN_NAME = 'styles-webpack-plugin';
 
 /**
  * Ported from Angular CLI Webpack plugin.
@@ -256,7 +253,7 @@ class StylesWebpackPlugin {
       fileSystem: compiler.inputFileSystem,
     });
     const webpackOptions = compiler.options;
-    compiler.hooks.environment.tap(PLUGIN_NAME, () => {
+    compiler.hooks.environment.tap('styles-webpack-plugin', () => {
       const entrypoints = webpackOptions.entry;
       for (const [bundleName, paths] of Object.entries(entryPoints)) {
         entrypoints[bundleName] ??= {};
@@ -278,7 +275,7 @@ class StylesWebpackPlugin {
       }
       return entrypoints;
     });
-    compiler.hooks.thisCompilation.tap(PLUGIN_NAME, (compilation) => {
+    compiler.hooks.thisCompilation.tap('styles-webpack-plugin', (compilation) => {
       this.compilation = compilation;
     });
   }
