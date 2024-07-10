@@ -1,0 +1,19 @@
+h2 {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  text-decoration: underline;
+}
+
+img {
+  width: 96px;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+}

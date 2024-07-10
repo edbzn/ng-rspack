@@ -237,6 +237,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
         remotes: {
           mfe1: 'mfe1@http://localhost:3001/mf-manifest.json',
           mfe2: 'mfe2@http://localhost:3002/mf-manifest.json',
+          mfe3: 'mfe3@http://localhost:3003/mf-manifest.json',
         },
         shared: ['@angular/core', '@angular/common', '@angular/router'],
       }),

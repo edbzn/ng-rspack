@@ -12,4 +12,8 @@ export const appRoutes: Route[] = [
     path: 'mfe2',
     loadComponent: () => loadRemote('mfe2/app').then((m: any) => m.AppComponent),
   },
+  {
+    path: 'mfe3',
+    loadComponent: () => loadRemote('mfe3/app').then((m: any) => m.AppComponent),
+  },
 ];

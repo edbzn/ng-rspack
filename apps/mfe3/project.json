@@ -1,0 +1,49 @@
+{
+  "name": "mfe3",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/mfe3/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/mfe3/esbuild",
+        "index": "apps/mfe3/src/index.html",
+        "browser": "apps/mfe3/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/mfe3/tsconfig.app.json",
+        "assets": ["apps/mfe3/src/favicon.ico", "apps/mfe3/src/assets"],
+        "styles": ["apps/mfe3/src/styles.css"],
+        "scripts": [],
+        "plugins": ["apps/mfe3/esbuild-mf-plugin.ts"]
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "all",
+          "extractLicenses": false
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "port": 3003
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "mfe3:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    }
+  }
+}

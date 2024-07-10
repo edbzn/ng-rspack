@@ -33,6 +33,7 @@
     "@angular/cli": "~17.3.0",
     "@angular/compiler-cli": "~17.3.0",
     "@angular/language-service": "~17.3.0",
+    "@module-federation/esbuild": "^0.0.4",
     "@ngtools/webpack": "^17.3.6",
     "@nx/devkit": "18.3.4",
     "@nx/eslint": "18.3.4",
