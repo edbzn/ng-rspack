@@ -13,7 +13,7 @@
         "outputPath": "dist/mfe3/esbuild",
         "index": "apps/mfe3/src/index.html",
         "browser": "apps/mfe3/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [],
         "tsConfig": "apps/mfe3/tsconfig.app.json",
         "assets": ["apps/mfe3/src/favicon.ico", "apps/mfe3/src/assets"],
         "styles": ["apps/mfe3/src/styles.css"],
